@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include fibs *.css
+recursive-include fibs *.csv
+recursive-include fibs *.html
+recursive-include fibs *.ico
+recursive-include fibs *.js
+recursive-include fibs *.json
+recursive-include fibs *.md
+recursive-include fibs *.png
+recursive-include fibs *.py
+recursive-include fibs *.svg
+recursive-include fibs *.txt
+recursive-exclude fibs *.pyc

@@ -1,0 +1,64 @@
+{
+ "creation": "2019-10-02 13:58:13.328130",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cheque_no",
+  "cheque_owner",
+  "bank",
+  "account_no",
+  "amount",
+  "serial_no"
+ ],
+ "fields": [
+  {
+   "fieldname": "cheque_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Cheque No"
+  },
+  {
+   "fieldname": "bank",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Bank",
+   "options": "\nANZ\nBSP\nTDB\nMBF"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "cheque_owner",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Cheque Owner"
+  },
+  {
+   "fieldname": "account_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Account No"
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial No"
+  }
+ ],
+ "istable": 1,
+ "modified": "2019-10-03 08:34:44.561961",
+ "modified_by": "Administrator",
+ "module": "Fibs Application",
+ "name": "Cheques Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

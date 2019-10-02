@@ -1,0 +1,206 @@
+{
+ "autoname": "naming_series:",
+ "creation": "2019-09-16 11:35:17.792768",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "naming_series",
+  "column_break_3",
+  "posting_date",
+  "section_break_5",
+  "cash_details",
+  "section_break_8",
+  "column_break_9",
+  "column_break",
+  "total_cash",
+  "cheque_details_section",
+  "cheques_details",
+  "section_break_14",
+  "column_break_15",
+  "column_break_16",
+  "total_cheques",
+  "section_break_18",
+  "column_break_19",
+  "column_break_20",
+  "grand_total",
+  "pay_in_account_section",
+  "payin_account",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "PayIn",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PAY.-IN.-.YY.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break",
+   "label": "CASH DETAILS"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_cash",
+   "fieldtype": "Currency",
+   "label": "Total Cash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cheque_details_section",
+   "fieldtype": "Section Break",
+   "label": "CHEQUE DETAILS"
+  },
+  {
+   "fieldname": "cheques_details",
+   "fieldtype": "Table",
+   "label": "Cheques",
+   "options": "Cheques Details"
+  },
+  {
+   "fieldname": "column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_cheques",
+   "fieldtype": "Currency",
+   "label": "Total Cheques",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "GRAND TOTAL",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pay_in_account_section",
+   "fieldtype": "Section Break",
+   "label": "PAY IN ACCOUNT"
+  },
+  {
+   "fieldname": "payin_account",
+   "fieldtype": "Data",
+   "label": "Account  No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cash_details",
+   "fieldtype": "Table",
+   "label": "Cash",
+   "options": "Denomination Table"
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2019-10-03 09:08:27.655681",
+ "modified_by": "Administrator",
+ "module": "Fibs Application",
+ "name": "PayIn",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "posting_date",
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "title",
+ "track_changes": 1
+}
