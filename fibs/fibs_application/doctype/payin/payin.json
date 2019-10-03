@@ -132,6 +132,8 @@
   {
    "fieldname": "grand_total",
    "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "GRAND TOTAL",
    "options": "Currency",
    "read_only": 1
@@ -155,7 +157,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2019-10-03 09:08:27.655681",
+ "modified": "2019-10-04 11:52:24.633084",
  "modified_by": "Administrator",
  "module": "Fibs Application",
  "name": "PayIn",
@@ -197,6 +199,7 @@
    "write": 1
   }
  ],
+ "restrict_to_domain": "Retail",
  "search_fields": "posting_date",
  "show_preview_popup": 1,
  "sort_field": "modified",
