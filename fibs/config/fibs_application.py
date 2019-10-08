@@ -9,6 +9,7 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "PayIn",
+					"description": _("PAY In."),
 					"onboard": 1,
 				},
 

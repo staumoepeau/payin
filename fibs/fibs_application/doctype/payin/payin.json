@@ -11,23 +11,37 @@
   "column_break_3",
   "posting_date",
   "section_break_5",
-  "cash_details",
-  "section_break_8",
+  "pos_closing_voucher_table",
+  "section_break_7",
+  "column_break_8",
   "column_break_9",
-  "column_break",
-  "total_cash",
-  "cheque_details_section",
-  "cheques_details",
+  "total_pos_amount",
+  "section_break_8",
+  "column_break_12",
+  "payment_entry_table",
   "section_break_14",
   "column_break_15",
   "column_break_16",
+  "total_entry_payment",
+  "total",
+  "cash_section",
+  "cash_details",
+  "section_break",
+  "column_break_002",
+  "column_break_001",
+  "total_cash",
+  "cheque_details_section",
+  "cheques_details",
+  "section_break_014",
+  "column_break_015",
+  "column_break_016",
   "total_cheques",
   "section_break_18",
-  "column_break_19",
-  "column_break_20",
+  "different_amount",
+  "column_break_020",
   "grand_total",
   "pay_in_account_section",
-  "payin_account",
+  "account_no",
   "amended_from"
  ],
  "fields": [
@@ -66,8 +80,7 @@
   },
   {
    "fieldname": "section_break_5",
-   "fieldtype": "Section Break",
-   "label": "CASH DETAILS"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "section_break_8",
@@ -95,10 +108,6 @@
    "options": "Cheques Details"
   },
   {
-   "fieldname": "column_break",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "section_break_14",
    "fieldtype": "Section Break"
   },
@@ -122,14 +131,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "column_break_19",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_20",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "grand_total",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -144,20 +145,105 @@
    "label": "PAY IN ACCOUNT"
   },
   {
-   "fieldname": "payin_account",
-   "fieldtype": "Data",
-   "label": "Account  No",
-   "reqd": 1
-  },
-  {
    "fieldname": "cash_details",
    "fieldtype": "Table",
    "label": "Cash",
    "options": "Denomination Table"
+  },
+  {
+   "fieldname": "pos_closing_voucher_table",
+   "fieldtype": "Table",
+   "label": "POS Closing Voucher Table",
+   "options": "Payin POS Closing Voucher"
+  },
+  {
+   "fieldname": "cash_section",
+   "fieldtype": "Section Break",
+   "label": "CASH DETAILS"
+  },
+  {
+   "fieldname": "payment_entry_table",
+   "fieldtype": "Table",
+   "label": "Payment Entry Table",
+   "options": "Payin Payment Entry"
+  },
+  {
+   "fieldname": "section_break",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_pos_amount",
+   "fieldtype": "Currency",
+   "label": "Total POS",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_entry_payment",
+   "fieldtype": "Currency",
+   "label": "Total Payment",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_002",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_001",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_014",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_015",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_016",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_020",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "account_no",
+   "fieldtype": "Link",
+   "label": "Account  No",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "TOTAL",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "different_amount",
+   "fieldtype": "Currency",
+   "label": "Different",
+   "options": "Currency"
   }
  ],
  "is_submittable": 1,
- "modified": "2019-10-04 11:52:24.633084",
+ "modified": "2019-10-09 00:57:31.227134",
  "modified_by": "Administrator",
  "module": "Fibs Application",
  "name": "PayIn",

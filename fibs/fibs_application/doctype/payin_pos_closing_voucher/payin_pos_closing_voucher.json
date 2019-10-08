@@ -1,0 +1,73 @@
+{
+ "creation": "2019-10-04 14:48:09.999636",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "receipt_document",
+  "posting_date",
+  "cashier",
+  "col_break1",
+  "payin",
+  "total_voucher"
+ ],
+ "fields": [
+  {
+   "fieldname": "receipt_document",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "label": "Receipt Document",
+   "oldfieldname": "purchase_receipt_no",
+   "oldfieldtype": "Link",
+   "options": "POS Closing Voucher",
+   "print_width": "220px",
+   "reqd": 1,
+   "width": "220px"
+  },
+  {
+   "fieldname": "col_break1",
+   "fieldtype": "Column Break",
+   "width": "50%"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "payin",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "PayIn",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cashier",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Cashier",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_voucher",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Grand Total",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2019-10-08 21:21:14.567688",
+ "modified_by": "Administrator",
+ "module": "Fibs Application",
+ "name": "Payin POS Closing Voucher",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "ASC"
+}
