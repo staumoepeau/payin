@@ -12,21 +12,25 @@ frappe.ui.form.on('PayIn', {
 	total_pos_amount: function(frm){
 
 		frm.set_value("total", frm.doc.total_pos_amount + frm.doc.total_entry_payment);
+		refresh_many(['total','grand_total','different_amount']);
 	},
 
 	total_entry_payment: function(frm){
 		frm.set_value("total", frm.doc.total_pos_amount + frm.doc.total_entry_payment);
+		refresh_many(['total','grand_total','different_amount']);
 	},
 
 	total_cash: function(frm){
 
 		frm.set_value("grand_total", frm.doc.total_cash + frm.doc.total_cheques);
+		refresh_many(['total','grand_total','different_amount']);
 	},
 
 	total_cheques: function(frm){
 
 		frm.set_value("grand_total", frm.doc.total_cash + frm.doc.total_cheques);
-	}
+		refresh_many(['total','grand_total','different_amount']);
+	},
 	
 });
 
@@ -104,6 +108,8 @@ frappe.ui.form.on("Denomination Table", "qty", function(frm, cdt, cdn){
 	frm.doc.cash_details.forEach(function(d) { totalcash += d.total; });
   
 	frm.set_value("total_cash", totalcash);
+	cur_frm.refresh();
+	
   
 });
   
@@ -114,6 +120,7 @@ frappe.ui.form.on("Cheques Details", "amount", function(frm, cdt, cdn){
 	frm.doc.cheques_details.forEach(function(d) { totalcheques += d.amount; });
 
 	frm.set_value("total_cheques", totalcheques);
+	cur_frm.refresh();
 	 
 });
 
@@ -124,6 +131,7 @@ frappe.ui.form.on("Payin POS Closing Voucher", "receipt_document", function(frm,
 	frm.doc.pos_closing_voucher_table.forEach(function(d) { totalpayment += d.total_voucher; });
 
 	frm.set_value("total_pos_amount", totalpayment);
+	cur_frm.refresh();
 	 
 });
 
@@ -134,5 +142,6 @@ frappe.ui.form.on("Payin Payment Entry", "receipt_document", function(frm, cdt, 
 	frm.doc.payment_entry_table.forEach(function(d) { totalpayment += d.total_payment; });
 
 	frm.set_value("total_entry_payment", totalpayment);
+	cur_frm.refresh();
 	 
 });

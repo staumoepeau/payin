@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import frappe
 from frappe import _
 
 def get_data():
@@ -9,6 +9,7 @@ def get_data():
 			"category": "Modules",
 			"label": _("Fibs Application"),
 			"type": "module",
+			"link": "modules/Fibs Application",
 			"icon": "octicon octicon-book",
 			"color": "#3498db",
 			"description": "Payin Application",
