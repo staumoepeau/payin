@@ -25,23 +25,23 @@ class PayIn(Document):
 			self.total_cheques = 0
 			self.grand_total = self.total_cash + self.total_cheques
 		
-		self.check_balance()
+#		self.check_balance()
 
 	def on_submit(self):
-		self.validate_grand_total()
+#		self.validate_grand_total()
 		self.make_payin_entries()
 		self.update_pos()
 		self.update_payment_entry()
 
 	
-	def validate_grand_total(self):
-		if self.different_amount:
-			frappe.throw(_("Grand Total must be equal to Total. The difference is {0}")
-				.format(self.different_amount))
+#	def validate_grand_total(self):
+#		if self.different_amount:
+#			frappe.throw(_("Grand Total must be equal to Total. The difference is {0}")
+#				.format(self.different_amount))
 
-	def check_balance(self):
-		self.different_amount = flt(self.total, self.precision("total")) - \
-			flt(self.grand_total, self.precision("grand_total"))
+#	def check_balance(self):
+#		self.different_amount = flt(self.total, self.precision("total")) - \
+#			flt(self.grand_total, self.precision("grand_total"))
 
 
 	def make_payin_entries(self):
