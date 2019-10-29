@@ -5,31 +5,84 @@ frappe.provide("fibs.payin");
 
 frappe.ui.form.on('PayIn', {
 
+	refresh: function(frm){
+
+//		if (frm.doc.docstatus == 1 && frappe.user.has_role("Sales Master Manager") && frm.doc.status != "PayIn" && frm.doc.status != "Approve") {
+//			cur_frm.add_custom_button(__('Approved'),function() {
+//				cur_frm.events.update_status_approved(cur_frm);
+//			}, __('Action'));
+//			cur_frm.page.set_inner_btn_group_as_primary(__('Action'));
+//		}
+
+//		if (frm.doc.docstatus == 1 && frappe.user.has_role("Accounts User") && !frappe.user.has_role("Sales Master Manager") && frm.doc.status == "Approve") {
+//			cur_frm.add_custom_button(__('Comfirmed PayIn'),function() {
+//				cur_frm.events.update_status_payin(cur_frm);
+//			}, __('Action'));
+//			cur_frm.page.set_inner_btn_group_as_primary(__('Action'));
+//		}
+
+	},
+
+//	update_status_approved: function(frm){
+//		frappe.call({
+//			method: "update_status_approve",
+//			doc: frm.doc,
+//		})
+	//	frappe.throw(__("PayIn have been Approved"));
+//		location.reload(true);
+//	},
+
+//	update_status_payin: function(frm){
+//		frappe.call({
+//			method: "update_status_payin",
+//			doc: frm.doc,
+//		});
+	//	frappe.throw(__("PayIn have been Confirmed"));
+//		location.reload(true);
+
+//	},
+
+	on_submit: function(frm){
+		cur_frm.refresh();
+	},
+
 	onload: function(frm) {
 		fibs.payin.setup_queries(frm);
 	},
 
 	total_pos_amount: function(frm){
+		
+		if (!frm.doc.total_entry_payment || frm.doc.total_entry_payment == ""){
+			var total_entry_payment = 0;
+		}
 
-		frm.set_value("total", frm.doc.total_pos_amount + frm.doc.total_entry_payment);
-		refresh_many(['total','grand_total','different_amount']);
+		var total_amount = flt(frm.doc.total_pos_amount + total_entry_payment)
+		frm.set_value("total", total_amount);
+		cur_frm.refresh();
 	},
 
 	total_entry_payment: function(frm){
-		frm.set_value("total", frm.doc.total_pos_amount + frm.doc.total_entry_payment);
-		refresh_many(['total','grand_total','different_amount']);
+
+		var total_amount = flt(frm.doc.total_pos_amount + frm.doc.total_entry_payment)
+		frm.set_value("total", total_amount);
+		cur_frm.refresh();
 	},
 
 	total_cash: function(frm){
-
-		frm.set_value("grand_total", frm.doc.total_cash + frm.doc.total_cheques);
-		refresh_many(['total','grand_total','different_amount']);
+		
+		if (!frm.doc.total_cheques || frm.doc.total_cheques == ""){
+			var total_cheques = 0;
+		}
+		var grand_amount = flt(frm.doc.total_cash + total_cheques)
+		frm.set_value("grand_total", grand_amount);
+		cur_frm.refresh();
 	},
 
 	total_cheques: function(frm){
 
-		frm.set_value("grand_total", frm.doc.total_cash + frm.doc.total_cheques);
-		refresh_many(['total','grand_total','different_amount']);
+		var grand_amount = flt(frm.doc.total_cash + frm.doc.total_cheques)
+		frm.set_value("grand_total", grand_amount);
+		cur_frm.refresh();
 	},
 	
 });
@@ -124,18 +177,18 @@ frappe.ui.form.on("Cheques Details", "amount", function(frm, cdt, cdn){
 	 
 });
 
-frappe.ui.form.on("Payin POS Closing Voucher", "receipt_document", function(frm, cdt, cdn){
+frappe.ui.form.on("Payin POS Closing Voucher", "total_voucher", function(frm, cdt, cdn){
 	var d = locals[cdt][cdn];
 
-	var totalpayment = 0;
-	frm.doc.pos_closing_voucher_table.forEach(function(d) { totalpayment += d.total_voucher; });
+	var totalpos = 0;
+	frm.doc.pos_closing_voucher_table.forEach(function(d) { totalpos += d.total_voucher; });
 
-	frm.set_value("total_pos_amount", totalpayment);
+	frm.set_value("total_pos_amount", totalpos);
 	cur_frm.refresh();
 	 
 });
 
-frappe.ui.form.on("Payin Payment Entry", "receipt_document", function(frm, cdt, cdn){
+frappe.ui.form.on("Payin Payment Entry", "total_payment", function(frm, cdt, cdn){
 	var d = locals[cdt][cdn];
 
 	var totalpayment = 0;

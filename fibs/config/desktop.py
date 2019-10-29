@@ -11,8 +11,16 @@ def get_data():
 			"type": "module",
 			"link": "modules/Fibs Application",
 			"icon": "octicon octicon-book",
-			"color": "#3498db",
+			"color": "blue",
 			"description": "Payin Application",
-			"onboard_present": 1
+		},
+
+				{
+			"module_name": "Wharf Management",
+			"color": "blue",
+			"icon": "octicon octicon-tools",
+			"type": "module",
+			"link": "modules/Wharf Management",
+			"label": _("Ports Management")
 		},
 	]

@@ -32,6 +32,12 @@ class PayIn(Document):
 		self.make_payin_entries()
 		self.update_pos()
 		self.update_payment_entry()
+#		self.update_status()
+	
+
+#	def update_status(self):
+#		frappe.db.sql("""Update `tabPayIn` set status='Review' where name=%s""", (self.name))
+
 
 	
 #	def validate_grand_total(self):
@@ -68,3 +74,8 @@ class PayIn(Document):
 		for d in self.get("pos_closing_voucher_table"):
 			frappe.db.sql("""Update `tabPOS Closing Voucher` set payin=1 where name=%s""", (d.receipt_document))
 
+#	def update_status_approve(self):
+#		frappe.db.sql("""Update `tabPayIn` set status='Approve' where name=%s""", (self.name))
+	
+#	def update_status_payin(self):
+#		frappe.db.sql("""Update `tabPayIn` set status='PayIn' where name=%s""", (self.name))
