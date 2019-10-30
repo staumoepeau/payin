@@ -55,6 +55,9 @@ frappe.ui.form.on('PayIn', {
 		if (!frm.doc.total_entry_payment || frm.doc.total_entry_payment == ""){
 			var total_entry_payment = 0;
 		}
+		if (!frm.doc.total_pos_amount || frm.doc.total_pos_amount == ""){
+			var total_pos_amount = 0;
+		}
 
 		var total_amount = flt(frm.doc.total_pos_amount + total_entry_payment)
 		frm.set_value("total", total_amount);
@@ -62,6 +65,13 @@ frappe.ui.form.on('PayIn', {
 	},
 
 	total_entry_payment: function(frm){
+
+		if (!frm.doc.total_entry_payment || frm.doc.total_entry_payment == ""){
+			var total_entry_payment = 0;
+		}
+		if (!frm.doc.total_pos_amount || frm.doc.total_pos_amount == ""){
+			var total_pos_amount = 0;
+		}
 
 		var total_amount = flt(frm.doc.total_pos_amount + frm.doc.total_entry_payment)
 		frm.set_value("total", total_amount);
@@ -73,12 +83,22 @@ frappe.ui.form.on('PayIn', {
 		if (!frm.doc.total_cheques || frm.doc.total_cheques == ""){
 			var total_cheques = 0;
 		}
+		if (!frm.doc.total_cash || frm.doc.total_cash == ""){
+			var total_cash = 0;
+		}
 		var grand_amount = flt(frm.doc.total_cash + total_cheques)
 		frm.set_value("grand_total", grand_amount);
 		cur_frm.refresh();
 	},
 
 	total_cheques: function(frm){
+
+		if (!frm.doc.total_cheques || frm.doc.total_cheques == ""){
+			var total_cheques = 0;
+		}
+		if (!frm.doc.total_cash || frm.doc.total_cash == ""){
+			var total_cash = 0;
+		}
 
 		var grand_amount = flt(frm.doc.total_cash + frm.doc.total_cheques)
 		frm.set_value("grand_total", grand_amount);
@@ -127,6 +147,7 @@ frappe.ui.form.on("Payin POS Closing Voucher", "receipt_document", function(frm,
 				frappe.model.set_value(d.doctype, d.name, "payin", "1");
 				frappe.model.set_value(d.doctype, d.name, "total_voucher", data.message["total_amount"]);
 			}
+			
 	})
 });
 
@@ -152,32 +173,52 @@ frappe.ui.form.on("Payin Payment Entry", "receipt_document", function(frm, cdt, 
 
 
 
-frappe.ui.form.on("Denomination Table", "qty", function(frm, cdt, cdn){
-	var d = locals[cdt][cdn];
+frappe.ui.form.on("Denomination Table", {
+	qty: function(frm, cdt, cdn){
+		var d = locals[cdt][cdn];
+		
+		frappe.model.set_value(d.doctype, d.name, "total", d.denomination * d.qty);
 	
-	frappe.model.set_value(d.doctype, d.name, "total", d.denomination * d.qty);
-  
-	var totalcash = 0;
-	frm.doc.cash_details.forEach(function(d) { totalcash += d.total; });
-  
-	frm.set_value("total_cash", totalcash);
-	cur_frm.refresh();
+		var totalcash = 0;
+		frm.doc.cash_details.forEach(function(d) { totalcash += d.total; });
 	
+		frm.set_value("total_cash", totalcash);
+		cur_frm.refresh();
+	},
+
+	cash_details_remove: function(frm, cdt, cdn){
+		var totalcash = 0;
+		frm.doc.cash_details.forEach(function(d) { totalcash += d.total; });
+	
+		frm.set_value("total_cash", totalcash);
+		cur_frm.refresh();
+	}
   
 });
   
-frappe.ui.form.on("Cheques Details", "amount", function(frm, cdt, cdn){
-	var d = locals[cdt][cdn];
+frappe.ui.form.on("Cheques Details", {
+	amount: function(frm, cdt, cdn){
+		var d = locals[cdt][cdn];
 
-	var totalcheques = 0;
-	frm.doc.cheques_details.forEach(function(d) { totalcheques += d.amount; });
+		var totalcheques = 0;
+		frm.doc.cheques_details.forEach(function(d) { totalcheques += d.amount; });
 
-	frm.set_value("total_cheques", totalcheques);
-	cur_frm.refresh();
-	 
+		frm.set_value("total_cheques", totalcheques);
+		cur_frm.refresh();
+	},
+
+	cheques_details_remove: function(frm, cdt, cdn){
+		var d = locals[cdt][cdn];
+		var totalcheques = 0;
+		frm.doc.cheques_details.forEach(function(d) { totalcheques += d.amount; });
+
+		frm.set_value("total_cheques", totalcheques);
+		cur_frm.refresh();
+	}
 });
 
-frappe.ui.form.on("Payin POS Closing Voucher", "total_voucher", function(frm, cdt, cdn){
+frappe.ui.form.on("Payin POS Closing Voucher", {
+	total_voucher: function(frm, cdt, cdn){
 	var d = locals[cdt][cdn];
 
 	var totalpos = 0;
@@ -185,10 +226,19 @@ frappe.ui.form.on("Payin POS Closing Voucher", "total_voucher", function(frm, cd
 
 	frm.set_value("total_pos_amount", totalpos);
 	cur_frm.refresh();
-	 
+	},
+	
+	pos_closing_voucher_table_remove: function(frm, cdt, cdn){
+		var d = locals[cdt][cdn];
+		var totalpos = 0;;
+		frm.doc.pos_closing_voucher_table.forEach(function(d) { totalpos += d.total_voucher; });
+		frm.set_value("total_pos_amount", totalpos);
+		cur_frm.refresh();
+			}
 });
 
-frappe.ui.form.on("Payin Payment Entry", "total_payment", function(frm, cdt, cdn){
+frappe.ui.form.on("Payin Payment Entry", {
+	total_payment: function(frm, cdt, cdn){
 	var d = locals[cdt][cdn];
 
 	var totalpayment = 0;
@@ -196,5 +246,13 @@ frappe.ui.form.on("Payin Payment Entry", "total_payment", function(frm, cdt, cdn
 
 	frm.set_value("total_entry_payment", totalpayment);
 	cur_frm.refresh();
-	 
+	},
+	
+	payment_entry_table_remove: function(frm, cdt, cdn){
+		var d = locals[cdt][cdn];
+		var totalpayment = 0;
+		frm.doc.payment_entry_table.forEach(function(d) { totalpayment += d.total_payment; });
+		frm.set_value("total_entry_payment", totalpayment);
+		cur_frm.refresh();
+	}
 });
