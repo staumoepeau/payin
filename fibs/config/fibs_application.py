@@ -3,16 +3,14 @@ from frappe import _
 
 def get_data():
 	return [
-		{
-			"label": _("PAY In"),
-			"items": [
-				{
-					"type": "doctype",
-					"name": "PayIn",
-					"description": _("PAY In."),
-					"onboard": 1,
-				},
+			{
+				"label": _("PAY In"),
+				"items": [
+						{
+							"type": "doctype",
+							"name": "PayIn",
+						},
 
-			]
-		},
+				]
+			},
 	]

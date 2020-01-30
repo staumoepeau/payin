@@ -1,17 +1,18 @@
+# coding=utf-8
+
 from __future__ import unicode_literals
-import frappe
 from frappe import _
 
 def get_data():
 	return [
+		# Modules
 		{
 			"module_name": "Fibs Application",
 			"category": "Modules",
-			"label": _("Fibs Application"),
-			"type": "module",
-			"icon": "octicon octicon-book",
+			"label": _("Payin"),
 			"color": "#3498db",
-			"description": "Payin Application",
-			"onboard_present": 1
+			"icon": "fa fa-check-square-o",
+			"type": "module",
+			"description": "Payin Application."
 		},
 	]
