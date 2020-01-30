@@ -7,8 +7,9 @@
  "field_order": [
   "title",
   "naming_series",
-  "column_break_3",
   "posting_date",
+  "column_break_3",
+  "status",
   "section_break_5",
   "pos_closing_voucher_table",
   "section_break_7",
@@ -62,6 +63,7 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Series",
    "options": "PAY.-IN.-.YY.",
    "read_only": 1
@@ -130,6 +132,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "bold": 1,
    "fieldname": "grand_total",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -224,8 +227,7 @@
    "fieldname": "account_no",
    "fieldtype": "Link",
    "label": "Account  No",
-   "options": "Account",
-   "reqd": 1
+   "options": "Account"
   },
   {
    "fieldname": "total",
@@ -238,11 +240,25 @@
    "fieldname": "different_amount",
    "fieldtype": "Currency",
    "label": "Different",
-   "options": "Currency"
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nOpen\nApprove\nPayIn\nReview\nRejected",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
+<<<<<<< HEAD
  "modified": "2019-10-09 19:12:20.654836",
+=======
+ "modified": "2019-10-30 07:21:08.443394",
+>>>>>>> d0dcbbc716bf5c16d531cac15379c2f5d4aeb11c
  "modified_by": "Administrator",
  "module": "Fibs Application",
  "name": "PayIn",
@@ -269,9 +285,11 @@
    "report": 1,
    "role": "Accounts User",
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
+   "cancel": 1,
    "create": 1,
    "email": 1,
    "export": 1,

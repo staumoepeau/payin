@@ -27,16 +27,33 @@ class PayIn(Document):
 		
 #		self.check_balance()
 
-
 	def on_submit(self):
+#		self.validate_grand_total()
 		self.make_payin_entries()
 		self.update_pos()
 		self.update_payment_entry()
+#		self.update_status()
+	
+	def on_cancel(self):
+		self.cancel_pos()
+		self.cancel_payment_entry()
+#		self.update_status()
+	
+
+#	def update_status(self):
+#		frappe.db.sql("""Update `tabPayIn` set status='Review' where name=%s""", (self.name))
+
+
+	
+#	def validate_grand_total(self):
+#		if self.different_amount:
+#			frappe.throw(_("Grand Total must be equal to Total. The difference is {0}")
+#				.format(self.different_amount))
 
 #	def check_balance(self):
-#		if self.total != self.grand_total:
-#			different_value = self.total - self.grand_total
-#			self.different_amount = different_value
+#		self.different_amount = flt(self.total, self.precision("total")) - \
+#			flt(self.grand_total, self.precision("grand_total"))
+
 
 	def make_payin_entries(self):
 		doc = frappe.new_doc("Payment Entry")
@@ -62,3 +79,16 @@ class PayIn(Document):
 		for d in self.get("pos_closing_voucher_table"):
 			frappe.db.sql("""Update `tabPOS Closing Voucher` set payin=1 where name=%s""", (d.receipt_document))
 
+#	def update_status_approve(self):
+#		frappe.db.sql("""Update `tabPayIn` set status='Approve' where name=%s""", (self.name))
+	
+#	def update_status_payin(self):
+#		frappe.db.sql("""Update `tabPayIn` set status='PayIn' where name=%s""", (self.name))
+
+	def cancel_payment_entry(self):
+		for d in self.get("payment_entry_table"):
+			frappe.db.sql("""Update `tabPayment Entry` set payin=0 where name=%s""", (d.receipt_document))
+	
+	def cancel_pos(self):
+		for d in self.get("pos_closing_voucher_table"):
+			frappe.db.sql("""Update `tabPOS Closing Voucher` set payin=0 where name=%s""", (d.receipt_document))
