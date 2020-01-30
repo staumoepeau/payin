@@ -254,11 +254,7 @@
   }
  ],
  "is_submittable": 1,
-<<<<<<< HEAD
  "modified": "2019-10-09 19:12:20.654836",
-=======
- "modified": "2019-10-30 07:21:08.443394",
->>>>>>> d0dcbbc716bf5c16d531cac15379c2f5d4aeb11c
  "modified_by": "Administrator",
  "module": "Fibs Application",
  "name": "PayIn",
