@@ -59,9 +59,7 @@ frappe.ui.form.on('PayIn', {
 			var total_pos_amount = 0;
 		}
 
-		var total_amount = flt(frm.doc.total_pos_amount + total_entry_payment)
-		frm.set_value("total", total_amount);
-		cur_frm.refresh();
+		get_total(frm);
 	},
 
 	total_entry_payment: function(frm){
@@ -73,39 +71,46 @@ frappe.ui.form.on('PayIn', {
 			var total_pos_amount = 0;
 		}
 
-		var total_amount = flt(frm.doc.total_pos_amount + frm.doc.total_entry_payment)
-		frm.set_value("total", total_amount);
-		cur_frm.refresh();
+		get_total(frm);
 	},
 
 	total_cash: function(frm){
 		
 		if (!frm.doc.total_cheques || frm.doc.total_cheques == ""){
-			var total_cheques = 0;
+			frm.doc.total_cheques = 0;
 		}
 		if (!frm.doc.total_cash || frm.doc.total_cash == ""){
-			var total_cash = 0;
+			frm.doc.total_cash = 0;
 		}
-		var grand_amount = flt(frm.doc.total_cash + total_cheques)
-		frm.set_value("grand_total", grand_amount);
-		cur_frm.refresh();
+
+		get_grand_total(frm);
+		
 	},
 
 	total_cheques: function(frm){
 
 		if (!frm.doc.total_cheques || frm.doc.total_cheques == ""){
-			var total_cheques = 0;
+			frm.doc.total_cheques = 0;
 		}
 		if (!frm.doc.total_cash || frm.doc.total_cash == ""){
-			var total_cash = 0;
+			frm.doc.total_cash = 0;
 		}
 
-		var grand_amount = flt(frm.doc.total_cash + frm.doc.total_cheques)
-		frm.set_value("grand_total", grand_amount);
-		cur_frm.refresh();
+		get_grand_total(frm);
 	},
 	
 });
+
+var get_total = function(frm){
+	frm.doc.total = frm.doc.total_pos_amount + frm.doc.total_entry_payment
+	refresh_field("total")
+
+};
+
+var get_grand_total = function(frm){
+	frm.doc.grand_total = frm.doc.total_cash + frm.doc.total_cheques
+	refresh_field("grand_total")
+};
 
 $.extend(fibs.payin, {
 	setup_queries: function(frm) {

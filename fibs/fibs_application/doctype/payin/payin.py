@@ -21,9 +21,9 @@ class PayIn(Document):
 		if not self.total_entry_payment:
 			self.total_entry_payment = 0
 
-		if not self.total_cheques:
-			self.total_cheques = 0
-			self.grand_total = self.total_cash + self.total_cheques
+#		if not self.total_cheques:
+#			self.total_cheques = 0
+#			self.grand_total = self.total_cash + self.total_cheques
 		
 #		self.check_balance()
 
