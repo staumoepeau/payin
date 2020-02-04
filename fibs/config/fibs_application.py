@@ -10,6 +10,10 @@ def get_data():
 							"type": "doctype",
 							"name": "PayIn",
 						},
+						{
+							"type": "doctype",
+							"name": "POS Closing Voucher",
+						},
 
 				]
 			},
