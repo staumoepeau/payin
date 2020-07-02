@@ -75,7 +75,7 @@
    "fetch_from": null,
    "fetch_if_empty": 0,
    "fieldname": "salary_year_to_date",
-   "fieldtype": "Table",
+   "fieldtype": "Data",
    "hidden": 0,
    "idx": 24,
    "ignore_user_permissions": 0,
