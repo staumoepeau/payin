@@ -405,7 +405,7 @@
    "fetch_from": null,
    "fetch_if_empty": 0,
    "fieldname": "employee_working_hours",
-   "fieldtype": "Table",
+   "fieldtype": "Data",
    "hidden": 0,
    "idx": 57,
    "ignore_user_permissions": 0,
