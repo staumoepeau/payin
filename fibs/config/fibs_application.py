@@ -14,6 +14,10 @@ def get_data():
 							"type": "doctype",
 							"name": "POS Closing Voucher",
 						},
+						{
+							"type": "doctype",
+							"name": "Timesheet",
+						},
 
 				]
 			},
