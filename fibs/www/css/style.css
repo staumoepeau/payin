@@ -1699,12 +1699,13 @@ p.form-message.error {
 
 .footer-area {
     position: relative;
+    padding-top: 30px;
 }
 
 .footer-area::before {
     position: absolute;
     content: '';
-    background-image: url(../images/footer-bg.png);
+    
     background-repeat: no-repeat;
     background-position: top center;
     width: 100%;
@@ -1713,7 +1714,7 @@ p.form-message.error {
     left: 0;
     background-size: 100% 100%;
     z-index: -1;
-}
+    
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .footer-area::before {
