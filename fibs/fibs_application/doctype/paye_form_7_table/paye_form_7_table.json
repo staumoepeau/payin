@@ -1,0 +1,75 @@
+{
+ "creation": "2021-01-11 21:42:13.278629",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tin",
+  "employee_name",
+  "pay_period",
+  "total_salary_for_period",
+  "total_benefits_for_period",
+  "tax_deducted",
+  "net_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "tin",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "TIN"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "pay_period",
+   "fieldtype": "Data",
+   "label": "Pay Period"
+  },
+  {
+   "fieldname": "total_salary_for_period",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Total salary and wages for period"
+  },
+  {
+   "fieldname": "total_benefits_for_period",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Total value of benefits for pay period"
+  },
+  {
+   "fieldname": "tax_deducted",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tax Deducted"
+  },
+  {
+   "fieldname": "net_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Net Amount"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-17 17:45:09.279261",
+ "modified_by": "Administrator",
+ "module": "Fibs Application",
+ "name": "PAYE Form 7 Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
