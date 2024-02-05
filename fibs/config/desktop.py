@@ -9,7 +9,7 @@ def get_data():
 		{
 			"module_name": "Fibs Application",
 			"category": "Modules",
-			"label": _("Payin"),
+			"label": _("Fibs"),
 			"color": "#3498db",
 			"icon": "fa fa-check-square-o",
 			"type": "module",

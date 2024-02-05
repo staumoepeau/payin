@@ -14,6 +14,31 @@ def get_data():
 							"type": "doctype",
 							"name": "POS Closing Voucher",
 						},
+						
+
+				]
+			},
+			{
+				"label": _("Payroll Reports"),
+				"items": [
+						{
+							"type": "report",
+							"name": "FIBS Salary Register",
+							"is_query_report": True,
+							"doctype": "Salary Slip"
+						},
+						{
+							"type": "report",
+							"name": "FIBS Bank File",
+							"is_query_report": True,
+							"doctype": "Salary Slip"
+						},
+						{
+							"type": "report",
+							"name": "FIBS PAYE",
+							"is_query_report": True,
+							"doctype": "Salary Slip"
+						},
 						{
 							"type": "doctype",
 							"name": "Timesheet",

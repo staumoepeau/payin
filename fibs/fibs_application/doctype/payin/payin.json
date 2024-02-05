@@ -254,13 +254,14 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2019-10-09 19:12:20.654836",
+ "modified": "2024-01-25 05:58:57.117494",
  "modified_by": "Administrator",
  "module": "Fibs Application",
  "name": "PayIn",
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -270,6 +271,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
